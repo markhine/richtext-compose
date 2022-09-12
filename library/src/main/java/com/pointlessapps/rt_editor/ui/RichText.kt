@@ -16,13 +16,15 @@ fun RichText(
     value: RichTextValue,
     modifier: Modifier = Modifier,
     textStyle: RichTextStyle = defaultRichTextStyle(),
+    vararg visualTransformations: VisualTransformation,
 ) {
     Text(
         modifier = modifier,
         text = combinedTransformations(
             styledValue = value.styledValue,
             VisualTransformation.None,
-            UnorderedListTransformation(value.styleMapper)
+            UnorderedListTransformation(value.styleMapper),
+            *visualTransformations,
         ).filter(value.styledValue).text,
         style = textStyle.textStyle.copy(
             color = textStyle.textColor,

@@ -2,6 +2,7 @@ package com.pointlessapps.rt_editor.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.VisualTransformation
 import com.pointlessapps.rt_editor.model.RichTextValue
 
 @Composable
@@ -9,7 +10,8 @@ fun RichTextEditor(
     value: RichTextValue,
     onValueChange: (RichTextValue) -> Unit,
     modifier: Modifier = Modifier,
-    textFieldStyle: RichTextFieldStyle = defaultRichTextFieldStyle()
+    textFieldStyle: RichTextFieldStyle = defaultRichTextFieldStyle(),
+    vararg visualTransformations: VisualTransformation,
 ) {
     RichTextField(
         modifier = modifier,
@@ -22,6 +24,7 @@ fun RichTextEditor(
                 onValueChange(newValue)
             }
         },
-        textFieldStyle = textFieldStyle
+        textFieldStyle = textFieldStyle,
+        visualTransformations = visualTransformations,
     )
 }

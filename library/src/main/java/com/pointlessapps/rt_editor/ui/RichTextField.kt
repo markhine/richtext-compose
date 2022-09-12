@@ -28,7 +28,8 @@ internal fun RichTextField(
     styleMapper: StyleMapper,
     onValueChange: (TextFieldValue) -> Unit,
     modifier: Modifier = Modifier,
-    textFieldStyle: RichTextFieldStyle = defaultRichTextFieldStyle()
+    textFieldStyle: RichTextFieldStyle = defaultRichTextFieldStyle(),
+    vararg visualTransformations: VisualTransformation,
 ) {
     Box(modifier = modifier) {
         if (value.text.isEmpty()) {
@@ -48,7 +49,8 @@ internal fun RichTextField(
             visualTransformation = combinedTransformations(
                 styledValue = styledValue,
                 VisualTransformation.None,
-                UnorderedListTransformation(styleMapper)
+                UnorderedListTransformation(styleMapper),
+                *visualTransformations,
             ),
             textStyle = textFieldStyle.textStyle.copy(
                 color = textFieldStyle.textColor
