@@ -31,4 +31,5 @@ dependencies {
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.foundation:foundation:$compose_version"
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 }
