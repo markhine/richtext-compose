@@ -5,6 +5,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
 import com.pointlessapps.rt_editor.model.RichTextValue
@@ -17,6 +18,7 @@ fun RichText(
     modifier: Modifier = Modifier,
     textStyle: RichTextStyle = defaultRichTextStyle(),
     vararg visualTransformations: VisualTransformation,
+    onTextLayout: (TextLayoutResult) -> Unit = {},
 ) {
     Text(
         modifier = modifier,
@@ -28,7 +30,8 @@ fun RichText(
         ).filter(value.styledValue).text,
         style = textStyle.textStyle.copy(
             color = textStyle.textColor,
-        )
+        ),
+        onTextLayout = onTextLayout,
     )
 }
 

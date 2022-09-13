@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.TextFieldValue
@@ -30,6 +31,7 @@ internal fun RichTextField(
     modifier: Modifier = Modifier,
     textFieldStyle: RichTextFieldStyle = defaultRichTextFieldStyle(),
     vararg visualTransformations: VisualTransformation,
+    onTextLayout: (TextLayoutResult) -> Unit = {},
 ) {
     Box(modifier = modifier) {
         if (value.text.isEmpty()) {
@@ -55,7 +57,8 @@ internal fun RichTextField(
             textStyle = textFieldStyle.textStyle.copy(
                 color = textFieldStyle.textColor
             ),
-            cursorBrush = SolidColor(textFieldStyle.cursorColor)
+            cursorBrush = SolidColor(textFieldStyle.cursorColor),
+            onTextLayout = onTextLayout,
         )
     }
 }
